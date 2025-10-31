@@ -1,0 +1,36 @@
+{
+    "name": "hayir-kurumu-yonetim",
+    "version": "1.0.0",
+    "description": "Hayır kurumu yönetim sistemi - Yetim, sponsor, proje ve depo takibi",
+    "main": "index.js",
+    "scripts": {
+        "dev": "cd frontend && npm run dev",
+        "build": "cd frontend && npm run build",
+        "start": "cd frontend && npm start",
+        "lint": "cd frontend && npm run lint",
+        "migrate": "cd backend && supabase db push",
+        "seed": "node scripts/seed-database.js",
+        "generate-types": "cd backend && supabase gen types typescript --local > ../frontend/src/types/database.ts"
+    },
+    "keywords": [
+        "hayır kurumu",
+        "yetim takibi",
+        "sponsor yönetimi",
+        "proje yönetimi",
+        "depo yönetimi",
+        "whatsapp entegrasyonu",
+        "ocr",
+        "supabase",
+        "nextjs"
+    ],
+    "author": "Hayır Kurumu Yönetim Ekibi",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/username/hayir-kurumu-yonetim.git"
+    },
+    "workspaces": [
+        "frontend",
+        "backend"
+    ]
+}
