@@ -221,9 +221,11 @@ export default function AdminDashboard() {
                         </CardHeader>
                         <CardContent>
                             <div className="space-y-2">
-                                <Button className="w-full" variant="outline">
-                                    Yetim Listesi
-                                </Button>
+                                <Link href="/dashboard/admin/yetimler">
+                                    <Button className="w-full" variant="outline">
+                                        Yetim Listesi
+                                    </Button>
+                                </Link>
                                 <Button className="w-full" variant="outline">
                                     Yeni Yetim Ekle
                                 </Button>
