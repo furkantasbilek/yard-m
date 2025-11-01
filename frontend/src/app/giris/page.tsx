@@ -32,36 +32,24 @@ export default function LoginPage() {
             }
 
             if (data.user) {
+                console.log('✅ Giriş başarılı, kullanıcı:', data.user.id)
+
                 // Kullanıcı profilini kontrol et
-                const { data: profile } = await supabase
+                const { data: profile, error: profileError } = await supabase
                     .from('profiles')
                     .select('role, full_name')
                     .eq('id', data.user.id)
                     .single()
 
+                console.log('📋 Profil sorgusu:', { profile, profileError })
+
                 if (profile) {
-                    // Role göre yönlendirme
-                    switch (profile.role) {
-                        case 'admin':
-                            router.push('/dashboard/admin')
-                            break
-                        case 'personel':
-                            router.push('/dashboard/personel')
-                            break
-                        case 'muhasebe':
-                            router.push('/dashboard/muhasebe')
-                            break
-                        case 'sponsor':
-                            router.push('/dashboard/sponsor')
-                            break
-                        case 'aile':
-                            router.push('/dashboard/aile')
-                            break
-                        default:
-                            router.push('/dashboard')
-                    }
+                    console.log('✅ Profil bulundu:', profile)
+                    // Herkesi admin dashboard'a yönlendir (geçici)
+                    router.push('/dashboard/admin')
                 } else {
-                    setError('Kullanıcı profili bulunamadı')
+                    console.error('❌ Profil bulunamadı:', profileError)
+                    setError(`Profil hatası: ${profileError?.message || 'Bilinmeyen hata'}`)
                 }
             }
         } catch (err) {
